@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Heart } from "react-feather";
+import LikeIcon from "./likeIcon";
 
 function Button() {
   const [count, setCount] = useState(0); //temporary clientside state
@@ -26,13 +26,22 @@ function Button() {
   console.log(count);
   return (
     <div className="flex gap-6">
+      <div
+        className={` left-1/2 h-14 w-14 -translate-x-1/2 rounded-xl bg-red-400 drop-shadow-xl transition-all
+          ${count === 0 ? "translate-y-12" : ""}
+          ${count === 1 ? "translate-y-8" : ""}
+          ${count === 2 ? "translate-y-4" : ""}
+          ${count === 3 ? "translate-y-0" : ""}
+        `}
+      ></div>
       <button
-        className="rounded-xl bg-zinc-600 p-4"
+        className="relative rounded-full bg-zinc-200 p-4"
         type="button"
         onClick={handleClick}
       >
-        <Heart size={48} className="text-white" />
+        <LikeIcon className="relative" />
       </button>
+
       <span className="self-end text-xl text-white">{count}</span>
     </div>
   );
