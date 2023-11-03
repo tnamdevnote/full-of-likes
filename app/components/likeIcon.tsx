@@ -9,15 +9,14 @@ const HEART_PATH =
 
 function LikeIcon({ likes }: LikeIconProps) {
   return (
-    // <div className="relative rounded-xl bg-zinc-200">
-    <svg className="" viewBox="0 0 24 24">
+    <svg className="w-20" viewBox="0 0 24 24">
       <mask id="mask" mask-type="alpha">
         <path d={HEART_PATH} />
       </mask>
 
       <g mask="url(#mask)">
         <rect
-          className={`h-6 w-6 fill-current text-red-400 transition-transform
+          className={`h-6 w-6 fill-current text-red-400 duration-300 ease-out
           ${likes === 0 ? "translate-y-6" : ""}
           ${likes === 1 ? "translate-y-4" : ""}
           ${likes === 2 ? "translate-y-2" : ""}
@@ -31,7 +30,6 @@ function LikeIcon({ likes }: LikeIconProps) {
         strokeWidth={0.4}
       />
     </svg>
-    // </div>
   );
 }
 
