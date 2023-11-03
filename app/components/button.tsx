@@ -25,7 +25,7 @@ function Button() {
       setCountDirection("up");
     }
   }, [count]);
-  console.log(count);
+
   return (
     <div className="flex w-full justify-around">
       <button
