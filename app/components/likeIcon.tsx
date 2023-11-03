@@ -9,7 +9,7 @@ const HEART_PATH =
 
 function LikeIcon({ likes }: LikeIconProps) {
   return (
-    <svg className="w-20" viewBox="0 0 24 24">
+    <svg className="w-14" viewBox="0 0 24 24">
       <mask id="mask" mask-type="alpha">
         <path d={HEART_PATH} />
       </mask>
