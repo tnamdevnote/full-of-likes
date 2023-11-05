@@ -19,7 +19,6 @@ function LikeIcon({ likes }: LikeIconProps) {
       <defs>
         <clipPath id="mask" mask-type="alpha" maskUnits="userSpaceOnUse">
           <path d={HEART_PATH} />
-          <rect></rect>
         </clipPath>
       </defs>
       <g clipPath="url(#mask)" overflow="hidden">
@@ -47,7 +46,7 @@ function LikeIcon({ likes }: LikeIconProps) {
       <path
         d={HEART_PATH}
         className="fill-transparent stroke-black"
-        strokeWidth={1}
+        strokeWidth={0.5}
       />
     </svg>
   );

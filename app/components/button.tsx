@@ -30,14 +30,14 @@ function Button() {
   return (
     <div className="flex w-60 gap-6 p-8">
       <button
-        className="relative h-20 w-20 rounded-full p-3 transition-transform hover:scale-[1.1] hover:bg-zinc-400/10 hover:shadow-md active:scale-[1]"
+        className="relative h-20 w-20 rounded-xl p-3 transition-all hover:scale-[1.1] hover:bg-zinc-400/10 hover:shadow-md focus-visible:scale-[1.1] active:scale-[1]"
         type="button"
         onClick={handleClick}
       >
         <LikeIcon likes={count} />
       </button>
 
-      <span className="self-end text-xl text-white">{count}</span>
+      <span className="self-end text-xl text-zinc-600">{count}</span>
     </div>
   );
 }

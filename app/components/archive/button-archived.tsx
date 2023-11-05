@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import LikeIcon from "../likeIcon";
 
-function Button() {
+function ButtonArchived() {
   const [count, setCount] = useState(0); //temporary clientside state
   const [countDirection, setCountDirection] = useState("up");
 
@@ -47,4 +47,4 @@ function Button() {
   );
 }
 
-export default Button;
+export default ButtonArchived;
