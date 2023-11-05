@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import LikeIcon from "./likeIcon";
 import LikeIconSkeleton from "./likeIconSkeleton";
 import LikeIconTwo from "./likeIconTwo";
+import { Heart } from "react-feather";
 
 function Button() {
   const [count, setCount] = useState(0); //temporary clientside state
@@ -18,7 +19,7 @@ function Button() {
   };
 
   useEffect(() => {
-    if (count === 3) {
+    if (count === 5) {
       setCountDirection("down");
     }
     if (count === 0) {
@@ -27,21 +28,13 @@ function Button() {
   }, [count]);
 
   return (
-    <div className="flex w-full justify-around">
+    <div className="flex w-60 gap-6 p-8">
       <button
-        className="flex h-20 w-52 gap-4"
+        className="relative h-20 w-20 rounded-full p-3 transition-transform hover:scale-[1.1] hover:bg-zinc-400/10 hover:shadow-md active:scale-[1]"
         type="button"
         onClick={handleClick}
       >
-        <div>
-          <LikeIcon likes={count} />
-        </div>
-        <div>
-          <LikeIconSkeleton likes={count} />
-        </div>
-        <div>
-          <LikeIconTwo likes={count} />
-        </div>
+        <LikeIcon likes={count} />
       </button>
 
       <span className="self-end text-xl text-white">{count}</span>
