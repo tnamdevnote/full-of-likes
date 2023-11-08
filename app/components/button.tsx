@@ -11,19 +11,16 @@ function Button() {
   const [isCountUp, setIsCountUp] = useState(true);
 
   const handleIncrement = () => {
-    if (count < 5) {
-      setCount((count) => count + 1);
-      setIsCountUp(true);
-    }
+    setCount((count) => count + 1);
+    setIsCountUp(true);
   };
   const handleDecrement = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     e.preventDefault();
-    if (count > 0) {
-      setCount((count) => count - 1);
-      setIsCountUp(false);
-    }
+
+    setCount((count) => count - 1);
+    setIsCountUp(false);
   };
 
   console.log(count, isCountUp);
@@ -32,8 +29,8 @@ function Button() {
       <button
         className="relative h-16 w-16 origin-center rounded-xl antialiased transition-transform duration-300 hover:scale-[1.3] focus-visible:scale-[1.3] active:scale-[1.1]"
         type="button"
-        onClick={handleIncrement}
-        onContextMenu={handleDecrement}
+        onClick={() => count < 5 && handleIncrement()}
+        onContextMenu={(e) => count > 0 && handleDecrement(e)}
       >
         <LikeIcon likes={count} />
       </button>
