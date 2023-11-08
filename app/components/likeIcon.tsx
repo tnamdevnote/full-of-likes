@@ -45,9 +45,8 @@ function LikeIcon({ likes }: LikeIconProps) {
       </g>
       <path
         d={HEART_PATH}
-        className="fill-transparent stroke-black"
-        strokeWidth={0.5}
-        strokeOpacity={0.3}
+        className="fill-transparent stroke-zinc-600"
+        strokeWidth={1}
       />
     </svg>
   );

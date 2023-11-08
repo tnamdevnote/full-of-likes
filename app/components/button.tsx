@@ -8,36 +8,44 @@ import { Heart } from "react-feather";
 
 function Button() {
   const [count, setCount] = useState(0); //temporary clientside state
-  const [countDirection, setCountDirection] = useState("up");
+  const [isCountUp, setIsCountUp] = useState(true);
 
-  const handleClick = () => {
-    if (countDirection === "up") {
+  const handleIncrement = () => {
+    if (count < 5) {
       setCount((count) => count + 1);
-    } else {
+      setIsCountUp(true);
+    }
+  };
+  const handleDecrement = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    e.preventDefault();
+    if (count > 0) {
       setCount((count) => count - 1);
+      setIsCountUp(false);
     }
   };
 
-  useEffect(() => {
-    if (count === 5) {
-      setCountDirection("down");
-    }
-    if (count === 0) {
-      setCountDirection("up");
-    }
-  }, [count]);
-
+  console.log(count, isCountUp);
   return (
     <div className="flex w-60 gap-6 p-8">
       <button
-        className="relative h-20 w-20 origin-bottom rounded-xl p-3 transition-all hover:scale-[1.1] focus-visible:scale-[1.2] active:scale-[1]"
+        className="relative h-16 w-16 origin-center rounded-xl antialiased transition-transform duration-300 hover:scale-[1.3] focus-visible:scale-[1.3] active:scale-[1.1]"
         type="button"
-        onClick={handleClick}
+        onClick={handleIncrement}
+        onContextMenu={handleDecrement}
       >
         <LikeIcon likes={count} />
       </button>
-
-      <span className="self-end text-xl text-zinc-600">{count}</span>
+      <div className="relative self-end">
+        <span
+          key={count}
+          className="animate-counter absolute -translate-y-8 text-zinc-600 opacity-0"
+        >
+          {isCountUp ? "+1" : "-1"}
+        </span>
+        <span className="text-xl text-zinc-600">{count}</span>
+      </div>
     </div>
   );
 }
