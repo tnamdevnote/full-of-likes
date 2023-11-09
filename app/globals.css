@@ -4,15 +4,12 @@
 
 @layer utilities {
   #wave-1 {
-    transform: translateY(-300px);
     animation: wave-1 2s linear infinite;
   }
   #wave-2 {
-    transform: translateY(-300px);
     animation: wave-2 2s linear infinite;
   }
   #wave-3 {
-    transform: translateY(-300px);
     animation: wave-3 2s linear infinite;
   }
 
