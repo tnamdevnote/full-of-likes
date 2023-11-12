@@ -11,8 +11,6 @@ function Button() {
   const [isCountUp, setIsCountUp] = useState(true);
   const [audio, setAudio] = useState<HTMLAudioElement>();
   const [audioTwo, setAudioTwo] = useState<HTMLAudioElement>();
-  // const audio = new Audio("./shooting-sound.mp3");
-  // const audioTwo = new Audio("./pick.m4a");
 
   const handleIncrement = () => {
     setCount((count) => count + 1);
