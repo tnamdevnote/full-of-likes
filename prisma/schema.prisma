@@ -10,13 +10,7 @@ datasource db {
   relationMode = "prisma"
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-}
-
-model Likes {
+model Like {
   id Int @id @default(autoincrement())
   likes Int @default(0)
 }
