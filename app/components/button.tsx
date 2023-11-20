@@ -5,6 +5,7 @@ import LikeIcon from "./likeIcon";
 import LikeIconSkeleton from "./likeIconSkeleton";
 import LikeIconTwo from "./likeIconTwo";
 import { Heart } from "react-feather";
+import { getLikes } from "@/lib/getLikes";
 
 function Button() {
   const [count, setCount] = useState(0); //temporary clientside state
@@ -37,6 +38,7 @@ function Button() {
   };
 
   useEffect(() => {
+    // This is causing rerenders
     setAudio(new Audio("./shooting-sound.mp3"));
     setAudioTwo(new Audio("./pick.m4a"));
   }, []);
