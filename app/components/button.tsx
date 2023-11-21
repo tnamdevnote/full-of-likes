@@ -5,13 +5,14 @@ import LikeIcon from "./likeIcon";
 import LikeIconSkeleton from "./likeIconSkeleton";
 import LikeIconTwo from "./likeIconTwo";
 import { Heart } from "react-feather";
-import { getLikes } from "@/lib/getLikes";
+import { useLikes } from "@/lib/useLikes";
 
 function Button() {
   const [count, setCount] = useState(0); //temporary clientside state
   const [isCountUp, setIsCountUp] = useState(true);
   const [audio, setAudio] = useState<HTMLAudioElement>();
   const [audioTwo, setAudioTwo] = useState<HTMLAudioElement>();
+  const { total, currentLikes } = useLikes();
 
   const handleIncrement = () => {
     setCount((count) => count + 1);
@@ -43,6 +44,7 @@ function Button() {
     setAudioTwo(new Audio("./pick.m4a"));
   }, []);
 
+  console.log(total, currentLikes);
   return (
     <div className="flex w-60 gap-6 p-8">
       <button

@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const [total, likes] = await Promise.all([
       prisma.like.aggregate({
