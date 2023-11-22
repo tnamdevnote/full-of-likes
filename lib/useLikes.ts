@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useSWR from "swr";
 
 async function getLikes() {
@@ -8,13 +9,23 @@ async function getLikes() {
   return res.json();
 }
 
-async function updateLikes(count: number) {
+async function incrementLikes() {
   const res = await fetch("api/likes/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ count }),
   });
+  if (!res.ok) {
+    throw new Error("Failed to post likes");
+  }
 
+  return res.json();
+}
+
+async function decrementLikes() {
+  const res = await fetch("api/likes/", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+  });
   if (!res.ok) {
     throw new Error("Failed to post likes");
   }
@@ -23,14 +34,52 @@ async function updateLikes(count: number) {
 }
 
 export function useLikes() {
-  const { data, error, isLoading } = useSWR("likes", () => getLikes());
+  const { data, error, isLoading, mutate } = useSWR("likes", getLikes);
 
-  const incrememnt = () => {};
+  const increment = () => {
+    if (data.likes >= 10) return;
+    console.log(data);
+    // Send Post update to DB
+    // Meanwhile, increment cached data
+    incrementLikes();
+    mutate(
+      {
+        total: data.total + 1,
+        likes: data.likes + 1,
+      },
+      {
+        populateCache: true,
+        revalidate: false,
+        rollbackOnError: true,
+      },
+    );
+  };
+
+  const decrement = () => {
+    if (data.likes <= 0) return;
+    // mutate(
+    // {
+    //   total: data.likes - 1,
+    //   currentLikes: data.currentLikes - 1,
+    // },
+    // false,
+    // );
+    decrementLikes();
+    mutate(
+      {
+        total: data.total - 1,
+        likes: data.likes - 1,
+      },
+      false,
+    );
+  };
 
   return {
-    total: data?.total._sum.likes,
-    currentLikes: data?.likes.likes,
+    total: data?.total,
+    currentLikes: data?.likes,
     error,
     isLoading,
+    increment,
+    decrement,
   };
 }

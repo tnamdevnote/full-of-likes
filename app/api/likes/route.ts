@@ -2,41 +2,62 @@ import prisma from "@/lib/prisma";
 
 export async function GET() {
   try {
-    const [total, likes] = await Promise.all([
+    const [sum, likes] = await Promise.all([
       prisma.like.aggregate({
         _sum: {
           likes: true,
         },
       }),
       prisma.like.findUnique({
-        where: { id: 3 },
+        where: { id: 7 },
       }),
     ]);
 
-    return Response.json({ total, likes });
+    return Response.json({
+      total: sum?._sum.likes || 0,
+      likes: likes?.likes || 0,
+    });
   } catch (e) {
     console.log(e);
   }
 }
 
-export async function POST(request: Request) {
+export async function POST() {
   try {
-    const { count } = await request.json();
-    const res = await prisma.like.upsert({
+    await prisma.like.upsert({
       where: {
         id: 7,
       },
       update: {
         likes: {
-          increment: count,
+          increment: 1,
         },
       },
       create: {
         id: 7,
-        likes: count,
+        likes: 0,
       },
     });
     return Response.json({ message: "Created" }, { status: 200 });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function PUT() {
+  try {
+    await prisma.like.update({
+      where: {
+        id: 7,
+      },
+      data: {
+        likes: {
+          decrement: 1,
+        },
+      },
+    });
+
+    return Response.json({ message: "Updated" }, { status: 200 });
   } catch (e) {
     console.log(e);
   }
