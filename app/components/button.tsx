@@ -8,18 +8,23 @@ import { Heart } from "react-feather";
 import { useLikes } from "@/lib/useLikes";
 
 function Button() {
+  // const [count, setCount] = useState(0); //temporary clientside state
+  const [isCountUp, setIsCountUp] = useState(true);
   // const [audio, setAudio] = useState<HTMLAudioElement>();
   // const [audioTwo, setAudioTwo] = useState<HTMLAudioElement>();
-  const { total, currentLikes, isLoading, increment, decrement } = useLikes();
+  const { totalLikes, currentLikes, isLoading, increment, decrement } =
+    useLikes();
 
   const handleIncrement = () => {
     console.log("clicked");
+    setIsCountUp(true);
     increment();
+    // setCount((count) => count + 1);
     // if (audio && audioTwo) {
     //   audio.preservesPitch = false;
-    //   audio.playbackRate = (count + 1) / 3; // divide by 3 to start from the lower pitch
+    //   audio.playbackRate = (currentLikes + 1) / 3; // divide by 3 to start from the lower pitch
     //   audio.play();
-    //   count === 9 && audioTwo.play();
+    //   currentLikes === 9 && audioTwo.play();
     // }
   };
 
@@ -27,10 +32,12 @@ function Button() {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     e.preventDefault();
+    setIsCountUp(false);
     decrement();
+    // setCount((count) => count - 1);
     // if (audio) {
     //   audio.preservesPitch = false;
-    //   audio.playbackRate = (count + 1) / 3;
+    //   audio.playbackRate = (currentLikes + 1) / 3;
     //   audio.play();
     // }
   };
@@ -41,7 +48,7 @@ function Button() {
   //   setAudioTwo(new Audio("./pick.m4a"));
   // }, []);
 
-  console.log(total, currentLikes);
+  console.log(totalLikes, currentLikes);
   return (
     <div className="flex w-60 gap-6 p-8">
       <button
@@ -57,10 +64,10 @@ function Button() {
           key={currentLikes}
           className="absolute -translate-y-8 animate-counter text-zinc-600 opacity-0"
         >
-          {/* {currentLikes > 0 && (isCountUp ? "+1" : "-1")} */}
+          {currentLikes > 0 && (isCountUp ? "+1" : "-1")}
         </span>
         <span className="text-xl text-zinc-600">
-          {isLoading ? "loading..." : total}
+          {isLoading ? "loading..." : totalLikes}
         </span>
       </div>
     </div>

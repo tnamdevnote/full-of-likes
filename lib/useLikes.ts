@@ -57,13 +57,6 @@ export function useLikes() {
 
   const decrement = () => {
     if (data.likes <= 0) return;
-    // mutate(
-    // {
-    //   total: data.likes - 1,
-    //   currentLikes: data.currentLikes - 1,
-    // },
-    // false,
-    // );
     decrementLikes();
     mutate(
       {
@@ -75,7 +68,7 @@ export function useLikes() {
   };
 
   return {
-    total: data?.total,
+    totalLikes: data?.total,
     currentLikes: data?.likes,
     error,
     isLoading,
