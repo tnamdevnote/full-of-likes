@@ -5,7 +5,7 @@ import LikeIcon from "./likeIcon";
 import LikeIconSkeleton from "./likeIconSkeleton";
 import LikeIconTwo from "./likeIconTwo";
 import { Heart } from "react-feather";
-import { useLikes } from "@/lib/useLikes";
+import { useLikes } from "@/app/hooks/useLikes";
 
 function Button() {
   // const [count, setCount] = useState(0); //temporary clientside state
@@ -48,7 +48,6 @@ function Button() {
   //   setAudioTwo(new Audio("./pick.m4a"));
   // }, []);
 
-  console.log(totalLikes, currentLikes);
   return (
     <div className="flex w-60 gap-6 p-8">
       <button

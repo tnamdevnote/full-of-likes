@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useSWR from "swr";
 
 async function getLikes() {
@@ -38,7 +37,6 @@ export function useLikes() {
 
   const increment = () => {
     if (data.likes >= 10) return;
-    console.log(data);
     // Send Post update to DB
     // Meanwhile, increment cached data
     incrementLikes();
@@ -57,13 +55,19 @@ export function useLikes() {
 
   const decrement = () => {
     if (data.likes <= 0) return;
+    // Send Post update to DB
+    // Meanwhile, increment cached data
     decrementLikes();
     mutate(
       {
         total: data.total - 1,
         likes: data.likes - 1,
       },
-      false,
+      {
+        populateCache: true,
+        revalidate: false,
+        rollbackOnError: true,
+      },
     );
   };
 

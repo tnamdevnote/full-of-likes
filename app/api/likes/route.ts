@@ -1,7 +1,20 @@
-import prisma from "@/lib/prisma";
+import prisma from "@/prisma/prisma";
+import { createHash } from "crypto";
 
-export async function GET() {
+function getCurrentUserId(requestHeaders: Headers) {
+  const ipAddress = requestHeaders.get("x-forwarded-for") || "0.0.0.0";
+  const id = createHash("md5")
+    .update(ipAddress + process.env.IP_ADDRESS_SALT, "utf8")
+    .digest("hex");
+
+  return id;
+}
+
+export async function GET(request: Request) {
   try {
+    console.log(request.headers.get("x-forwarded-for"));
+    const currentUserId = getCurrentUserId(request.headers);
+    console.log(currentUserId);
     const [sum, likes] = await Promise.all([
       prisma.like.aggregate({
         _sum: {
@@ -9,7 +22,7 @@ export async function GET() {
         },
       }),
       prisma.like.findUnique({
-        where: { id: 7 },
+        where: { id: currentUserId },
       }),
     ]);
 
@@ -22,11 +35,12 @@ export async function GET() {
   }
 }
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
+    const currentUserId = getCurrentUserId(request.headers);
     await prisma.like.upsert({
       where: {
-        id: 7,
+        id: currentUserId,
       },
       update: {
         likes: {
@@ -34,7 +48,7 @@ export async function POST() {
         },
       },
       create: {
-        id: 7,
+        id: currentUserId,
         likes: 0,
       },
     });
@@ -44,11 +58,12 @@ export async function POST() {
   }
 }
 
-export async function PUT() {
+export async function PUT(request: Request) {
   try {
+    const currentUserId = getCurrentUserId(request.headers);
     await prisma.like.update({
       where: {
-        id: 7,
+        id: currentUserId,
       },
       data: {
         likes: {

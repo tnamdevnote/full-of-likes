@@ -12,7 +12,7 @@ datasource db {
 }
 
 model Like {
-  id Int @id @default(autoincrement())
+  id String @id
   likes Int @default(0)
 }
 
