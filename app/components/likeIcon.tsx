@@ -44,23 +44,23 @@ function LikeIcon({ likes }: LikeIconProps) {
             <path
               id="wave-1"
               d={WAVE_PATH_ONE}
-              fill="#fa7268"
+              fill="#FCB3AE"
               transform="translate(0,-650)"
             ></path>
             <path
               id="wave-2"
               d={WAVE_PATH_TWO}
-              fill="#e34c67"
+              fill="#ff837a"
               transform="translate(0,-650)"
             ></path>
             <path
               id="wave-3"
               d={WAVE_PATH_THREE}
-              fill="#c62368"
+              fill="#ED5D52"
               transform="translate(0,-650)"
             ></path>
             <rect
-              className={`h-full w-full fill-current text-[#c62368]`}
+              className={`h-full w-full fill-current text-[#ED5D52]`}
               transform="translate(0,200)"
             />
           </svg>

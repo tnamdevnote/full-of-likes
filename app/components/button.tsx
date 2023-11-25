@@ -36,22 +36,21 @@ function Button() {
 
   return (
     <div className="flex items-center space-x-3 p-8">
-      <div className="relative">
+      <button
+        className="relative h-24 w-24 origin-center rounded-full bg-white p-4 shadow-lg shadow-red-800/40 transition-all duration-300 hover:scale-[1.1] focus-visible:scale-[1.2] active:scale-[1.4]"
+        type="button"
+        onClick={() => currentLikes < 10 && handleIncrement()}
+        onContextMenu={(e) => currentLikes > 0 && handleDecrement(e)}
+      >
         <span
           key={currentLikes}
-          className="absolute w-full -translate-y-4 animate-counter text-center text-zinc-600 opacity-0"
+          className="absolute right-10 -translate-y-4 animate-counter text-zinc-600 opacity-0"
         >
           {currentLikes > 0 && (isCountUp ? "+1" : "-1")}
         </span>
-        <button
-          className="relative h-24 w-24 origin-center rounded-full p-2 transition-all duration-300 hover:scale-[1.2] focus-visible:scale-[1.2] active:scale-[1.4]"
-          type="button"
-          onClick={() => currentLikes < 10 && handleIncrement()}
-          onContextMenu={(e) => currentLikes > 0 && handleDecrement(e)}
-        >
-          <LikeIcon likes={currentLikes || 0} />
-        </button>
-      </div>
+        <LikeIcon likes={currentLikes || 0} />
+      </button>
+
       <div className="self-center">
         <span className="text-2xl leading-none text-zinc-600">
           {isLoading ? <LoadingDots /> : <span>{totalLikes}</span>}
