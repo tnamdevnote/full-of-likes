@@ -12,9 +12,7 @@ function getCurrentUserId(requestHeaders: Headers) {
 
 export async function GET(request: Request) {
   try {
-    console.log(request.headers.get("x-forwarded-for"));
     const currentUserId = getCurrentUserId(request.headers);
-    console.log(currentUserId);
     const [sum, likes] = await Promise.all([
       prisma.like.aggregate({
         _sum: {

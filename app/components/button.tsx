@@ -4,11 +4,7 @@ import React, { useState } from "react";
 import LikeIcon from "./likeIcon";
 import { useLikes } from "@/app/hooks/useLikes";
 import { Howl } from "howler";
-
-const sounds = [
-  { id: "sound1", src: "./shooting-sound.mp3" },
-  { id: "sound2", src: "./pick.m4a" },
-];
+import LoadingDots from "./loadingDots";
 
 function Button() {
   const [isCountUp, setIsCountUp] = useState(true);
@@ -16,6 +12,8 @@ function Button() {
     useLikes();
 
   const handleIncrement = () => {
+    // Initializing Howl within the handler.
+    // Audio object must be initialized after user-gesture (e.g. clicks)
     const sound1 = new Howl({ src: ["./shooting-sound.mp3"] });
     const sound2 = new Howl({ src: ["./pick.m4a"] });
     !isCountUp && setIsCountUp(true);
@@ -37,24 +35,26 @@ function Button() {
   };
 
   return (
-    <div className="flex w-60 gap-6 p-8">
-      <button
-        className="relative h-16 w-16 origin-center rounded-xl transition-transform duration-300 hover:scale-[1.2] focus-visible:scale-[1.2] active:scale-[1.4]"
-        type="button"
-        onClick={() => currentLikes < 10 && handleIncrement()}
-        onContextMenu={(e) => currentLikes > 0 && handleDecrement(e)}
-      >
-        <LikeIcon likes={currentLikes || 0} />
-      </button>
-      <div className="relative self-end">
+    <div className="flex items-center space-x-3 p-8">
+      <div className="relative">
         <span
           key={currentLikes}
-          className="absolute -translate-y-8 animate-counter text-zinc-600 opacity-0"
+          className="absolute w-full -translate-y-4 animate-counter text-center text-zinc-600 opacity-0"
         >
           {currentLikes > 0 && (isCountUp ? "+1" : "-1")}
         </span>
-        <span className="text-xl text-zinc-600">
-          {isLoading ? "loading..." : totalLikes}
+        <button
+          className="relative h-24 w-24 origin-center rounded-full p-2 transition-all duration-300 hover:scale-[1.2] focus-visible:scale-[1.2] active:scale-[1.4]"
+          type="button"
+          onClick={() => currentLikes < 10 && handleIncrement()}
+          onContextMenu={(e) => currentLikes > 0 && handleDecrement(e)}
+        >
+          <LikeIcon likes={currentLikes || 0} />
+        </button>
+      </div>
+      <div className="self-center">
+        <span className="text-2xl leading-none text-zinc-600">
+          {isLoading ? <LoadingDots /> : <span>{totalLikes}</span>}
         </span>
       </div>
     </div>

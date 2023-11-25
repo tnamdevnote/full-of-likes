@@ -32,13 +32,16 @@ async function decrementLikes() {
   return res.json();
 }
 
+/**
+ * A hook to fetch and update like counts.
+ * @remark Optimistically update like counts using SWR mutate
+ */
 export function useLikes() {
   const { data, error, isLoading, mutate } = useSWR("likes", getLikes);
 
   const increment = () => {
     if (data.likes >= 10) return;
-    // Send Post update to DB
-    // Meanwhile, increment cached data
+    // Optimistic UI Pattern. Increment cached data while sending POST request to DB
     incrementLikes();
     mutate(
       {
@@ -55,8 +58,7 @@ export function useLikes() {
 
   const decrement = () => {
     if (data.likes <= 0) return;
-    // Send Post update to DB
-    // Meanwhile, increment cached data
+    // Optimistic UI Pattern. Decrement cached data while sending PUT request to DB
     decrementLikes();
     mutate(
       {

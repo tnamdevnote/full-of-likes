@@ -26,6 +26,18 @@ const config: Config = {
             transform: "translateY(-40px)",
           },
         },
+        loading: {
+          "0%": {
+            opacity: ".2",
+          },
+          "20%": {
+            opacity: "1",
+            transform: "translateX(1px)",
+          },
+          to: {
+            opacity: ".2",
+          },
+        },
       },
     },
   },
