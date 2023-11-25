@@ -1,10 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import LikeIcon from "./likeIcon";
-import LikeIconSkeleton from "./likeIconSkeleton";
-import LikeIconTwo from "./likeIconTwo";
-import { Heart } from "react-feather";
 import { useLikes } from "@/app/hooks/useLikes";
 import { Howl } from "howler";
 
@@ -17,39 +14,28 @@ function Button() {
   const [isCountUp, setIsCountUp] = useState(true);
   const { totalLikes, currentLikes, isLoading, increment, decrement } =
     useLikes();
-  const soundMap = useRef<Map<string, Howl>>(new Map());
 
   const handleIncrement = () => {
-    const sound1 = soundMap.current.get("sound1");
-    const sound2 = soundMap.current.get("sound2");
-    setIsCountUp(true);
+    const sound1 = new Howl({ src: ["./shooting-sound.mp3"] });
+    const sound2 = new Howl({ src: ["./pick.m4a"] });
+    !isCountUp && setIsCountUp(true);
     increment();
-    if (sound1 && sound2) {
-      sound1.play();
-      sound1.rate((currentLikes + 1) / 3);
-      currentLikes === 9 && sound2.play();
-    }
+    sound1.play();
+    sound1.rate((currentLikes + 1) / 3);
+    currentLikes === 9 && sound2.play();
   };
 
   const handleDecrement = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     e.preventDefault();
-    setIsCountUp(false);
+    const sound1 = new Howl({ src: ["./shooting-sound.mp3"] });
+    isCountUp && setIsCountUp(false);
     decrement();
-    const sound1 = soundMap.current.get("sound1");
-    if (sound1) {
-      sound1.play();
-      sound1.rate((currentLikes + 1) / 3);
-    }
+    sound1.play();
+    sound1.rate((currentLikes + 1) / 3);
   };
 
-  useEffect(() => {
-    sounds.forEach((sound) => {
-      soundMap.current.set(sound.id, new Howl({ src: [sound.src] }));
-    });
-  }, [sounds]);
-  console.log("render");
   return (
     <div className="flex w-60 gap-6 p-8">
       <button
