@@ -1,31 +1,34 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LikeIcon from "./likeIcon";
 import LikeIconSkeleton from "./likeIconSkeleton";
 import LikeIconTwo from "./likeIconTwo";
 import { Heart } from "react-feather";
 import { useLikes } from "@/app/hooks/useLikes";
+import { Howl } from "howler";
+
+const sounds = [
+  { id: "sound1", src: "./shooting-sound.mp3" },
+  { id: "sound2", src: "./pick.m4a" },
+];
 
 function Button() {
-  // const [count, setCount] = useState(0); //temporary clientside state
   const [isCountUp, setIsCountUp] = useState(true);
-  // const [audio, setAudio] = useState<HTMLAudioElement>();
-  // const [audioTwo, setAudioTwo] = useState<HTMLAudioElement>();
   const { totalLikes, currentLikes, isLoading, increment, decrement } =
     useLikes();
+  const soundMap = useRef<Map<string, Howl>>(new Map());
 
   const handleIncrement = () => {
-    console.log("clicked");
+    const sound1 = soundMap.current.get("sound1");
+    const sound2 = soundMap.current.get("sound2");
     setIsCountUp(true);
     increment();
-    // setCount((count) => count + 1);
-    // if (audio && audioTwo) {
-    //   audio.preservesPitch = false;
-    //   audio.playbackRate = (currentLikes + 1) / 3; // divide by 3 to start from the lower pitch
-    //   audio.play();
-    //   currentLikes === 9 && audioTwo.play();
-    // }
+    if (sound1 && sound2) {
+      sound1.play();
+      sound1.rate((currentLikes + 1) / 3);
+      currentLikes === 9 && sound2.play();
+    }
   };
 
   const handleDecrement = (
@@ -34,20 +37,19 @@ function Button() {
     e.preventDefault();
     setIsCountUp(false);
     decrement();
-    // setCount((count) => count - 1);
-    // if (audio) {
-    //   audio.preservesPitch = false;
-    //   audio.playbackRate = (currentLikes + 1) / 3;
-    //   audio.play();
-    // }
+    const sound1 = soundMap.current.get("sound1");
+    if (sound1) {
+      sound1.play();
+      sound1.rate((currentLikes + 1) / 3);
+    }
   };
 
-  // useEffect(() => {
-  //   // This is causing rerenders
-  //   setAudio(new Audio("./shooting-sound.mp3"));
-  //   setAudioTwo(new Audio("./pick.m4a"));
-  // }, []);
-
+  useEffect(() => {
+    sounds.forEach((sound) => {
+      soundMap.current.set(sound.id, new Howl({ src: [sound.src] }));
+    });
+  }, [sounds]);
+  console.log("render");
   return (
     <div className="flex w-60 gap-6 p-8">
       <button
