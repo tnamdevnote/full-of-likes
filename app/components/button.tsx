@@ -51,7 +51,7 @@ function Button() {
         <LikeIcon likes={currentLikes || 0} />
       </button>
 
-      <div className="self-center">
+      <div className="w-8 self-center">
         <span className="text-2xl leading-none text-zinc-600">
           {isLoading ? <LoadingDots /> : <span>{totalLikes}</span>}
         </span>
