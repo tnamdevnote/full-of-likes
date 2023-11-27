@@ -37,7 +37,7 @@ function Button() {
   return (
     <div className="flex items-center gap-6 p-8">
       <button
-        className="relative h-24 w-24 origin-center rounded-full bg-white p-4 shadow-lg shadow-red-800/40 transition-all duration-300 hover:scale-[1.1] focus-visible:scale-[1.2] active:scale-[1.3]"
+        className="relative h-24 w-24 origin-center rounded-full bg-white p-4 shadow-lg shadow-red-800/40 transition-all duration-300 hover:scale-[1.1] hover:cursor-pointer focus-visible:scale-[1.2] active:scale-[1.3]"
         type="button"
         onClick={() => currentLikes < 10 && handleIncrement()}
         onContextMenu={(e) => currentLikes > 0 && handleDecrement(e)}
@@ -46,7 +46,7 @@ function Button() {
           key={currentLikes}
           className="absolute right-10 -translate-y-4 animate-counter text-zinc-600 opacity-0"
         >
-          {currentLikes > 0 && (isCountUp ? "+1" : "-1")}
+          {currentLikes > 0 && (isCountUp ? `+1` : `-1`)}
         </span>
         <LikeIcon likes={currentLikes || 0} />
       </button>

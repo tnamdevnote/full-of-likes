@@ -10,7 +10,7 @@ export default function Home() {
             is a mere reed shaken in the wind.
           </p>
           <span className="mt-4 self-end text-xs text-red-950/60">
-            <i>Johannes Brahms, 1833~1897</i>
+            Johannes Brahms, 1833~1897
           </span>
         </article>
         <Button />
