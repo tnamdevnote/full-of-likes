@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  /* #wave-1 {
+/* @layer utilities {
+  #wave-1 {
     animation: wave-1 2s linear infinite;
   }
   #wave-2 {
@@ -11,7 +11,7 @@
   }
   #wave-3 {
     animation: wave-3 2s linear infinite;
-  } */
+  }
 
   @keyframes wave-1 {
     0% {
@@ -92,7 +92,7 @@
       );
     }
   }
-}
+} */
 
 * {
   box-sizing: border-box;
