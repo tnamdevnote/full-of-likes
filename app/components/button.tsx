@@ -47,7 +47,7 @@ function Button() {
         <LikeIcon likes={currentLikes || 0} />
       </button>
 
-      <div className="relative w-8 self-center">
+      <div className="relative flex w-10 flex-col items-center self-center">
         <span
           key={currentLikes}
           className="absolute -translate-y-4 animate-counter text-zinc-600 opacity-0"

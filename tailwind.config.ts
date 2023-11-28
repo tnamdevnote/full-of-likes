@@ -42,7 +42,7 @@ const config: Config = {
         splash: {
           "0%": {
             opacity: "0",
-            transform: "translateY(30%)",
+            transform: "translateY(20%)",
           },
           "3%, 70%": {
             opacity: "1",

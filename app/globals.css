@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .animation-delay {
-    animation-delay: calc(--order);
-  }
-}
-
 * {
   box-sizing: border-box;
 }
