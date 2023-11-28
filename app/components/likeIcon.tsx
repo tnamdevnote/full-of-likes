@@ -42,19 +42,16 @@ function LikeIcon({ likes }: LikeIconProps) {
         >
           <svg viewBox="0 0 900 900" overflow="hidden">
             <path
-              // className={`animate-wave1`}
               d={WAVE_PATH_ONE}
               fill="#FCB3AE"
               transform="translate(0,-350)"
             ></path>
             <path
-              // className={`animate-wave2`}
               d={WAVE_PATH_TWO}
               fill="#ff837a"
               transform="translate(0,-350)"
             ></path>
             <path
-              // className={`animate-wave3`}
               d={WAVE_PATH_THREE}
               fill="#ED5D52"
               transform="translate(0,-350)"
