@@ -56,7 +56,7 @@ export async function POST(request: Request) {
   }
 }
 
-export async function PUT(request: Request) {
+export async function PATCH(request: Request) {
   try {
     const currentUserId = getCurrentUserId(request.headers);
     await prisma.like.update({
