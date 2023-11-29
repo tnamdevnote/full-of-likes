@@ -22,7 +22,7 @@ async function incrementLikes() {
 
 async function decrementLikes() {
   const res = await fetch("api/likes/", {
-    method: "PUT",
+    method: "PATCH",
     headers: { "Content-Type": "application/json" },
   });
   if (!res.ok) {
@@ -37,7 +37,9 @@ async function decrementLikes() {
  * @remark Optimistically update like counts using SWR mutate
  */
 export function useLikes() {
-  const { data, error, isLoading, mutate } = useSWR("likes", getLikes);
+  const { data, error, isLoading, mutate } = useSWR("likes", getLikes, {
+    refreshInterval: 120000,
+  });
 
   const increment = () => {
     if (data.likes >= 10) return;
