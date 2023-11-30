@@ -12,20 +12,24 @@ function Button() {
   const { totalLikes, currentLikes, isLoading, increment, decrement } =
     useLikes();
 
-  const playSound = () => {
+  const playSoundOne = () => {
     // Initializing Howl within the handler.
     // Audio object must be initialized after user-gesture (e.g. clicks)
     const sound1 = new Howl({ src: ["./shooting-sound.mp3"] });
-    const sound2 = new Howl({ src: ["./pick.m4a"] });
     sound1.play();
     sound1.rate((currentLikes + 1) / 3);
-    currentLikes === 9 && isCountUp && sound2.play();
+  };
+
+  const playSoundTwo = () => {
+    const sound2 = new Howl({ src: ["./pick.m4a"] });
+    sound2.play();
   };
 
   const handleIncrement = () => {
     !isCountUp && setIsCountUp(true);
     increment();
-    playSound();
+    playSoundOne();
+    currentLikes === 9 && playSoundTwo();
   };
 
   const handleDecrement = (
@@ -34,7 +38,7 @@ function Button() {
     e.preventDefault();
     isCountUp && setIsCountUp(false);
     decrement();
-    playSound();
+    playSoundOne();
   };
 
   return (
