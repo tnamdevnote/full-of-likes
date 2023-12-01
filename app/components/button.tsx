@@ -46,6 +46,7 @@ function Button() {
       <button
         className="relative h-24 w-24 origin-center rounded-full bg-white p-4 shadow-lg shadow-red-800/40 transition-all duration-300 hover:scale-[1.1] hover:cursor-pointer focus-visible:scale-[1.2] active:scale-[0.8]"
         type="button"
+        disabled={isLoading}
         onClick={() => currentLikes < 10 && handleIncrement()}
         onContextMenu={(e) => currentLikes > 0 && handleDecrement(e)}
       >
