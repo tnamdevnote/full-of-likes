@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import LikeIcon from "../likeIcon";
-import LikeIconSkeleton from "../likeIconSkeleton";
-import LikeIconTwo from "../likeIconTwo";
+import LikeIconSkeleton from "./likeIconSkeleton";
+import LikeIconTwo from "./likeIconTwo";
 
 function ButtonDemo() {
   const [count, setCount] = useState(0); //temporary clientside state

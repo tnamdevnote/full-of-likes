@@ -47,7 +47,7 @@ export async function POST(request: Request) {
       },
       create: {
         id: currentUserId,
-        likes: 0,
+        likes: 1,
       },
     });
     return Response.json({ message: "Created" }, { status: 200 });

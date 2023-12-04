@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       animation: {
         counter: "counter 0.75s ease-in ",
-        splash: "splash 1s ease forwards",
+        explode: "explode 1s ease forwards",
       },
       keyframes: {
         counter: {
@@ -39,7 +39,7 @@ const config: Config = {
             opacity: ".2",
           },
         },
-        splash: {
+        explode: {
           "0%": {
             opacity: "0",
             transform: "translateY(20%)",

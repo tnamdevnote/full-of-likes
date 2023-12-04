@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import LikeIcon from "../likeIcon";
+import LikeIconTwo from "./likeIconTwo";
+import LikeIconSkeleton from "./likeIconSkeleton";
 
 function ButtonArchived() {
   const [count, setCount] = useState(0); //temporary clientside state
@@ -25,24 +27,17 @@ function ButtonArchived() {
   }, [count]);
   console.log(count);
   return (
-    <div className="flex gap-6">
+    <div className="flex max-w-md justify-center gap-6 rounded-2xl bg-white p-12">
       <button
-        className="relative rounded-full bg-zinc-200 p-4"
+        className="relative flex gap-8"
         type="button"
         onClick={handleClick}
       >
-        <div
-          className={` left-1/2 h-14 w-14 -translate-x-1/2 rounded-xl bg-red-400 drop-shadow-xl transition-all
-          ${count === 0 ? "translate-y-12" : ""}
-          ${count === 1 ? "translate-y-8" : ""}
-          ${count === 2 ? "translate-y-4" : ""}
-          ${count === 3 ? "translate-y-0" : ""}
-        `}
-        ></div>
-        <LikeIcon likes={count} />
+        <LikeIconSkeleton likes={count} />
+        <LikeIconTwo likes={count} />
       </button>
 
-      <span className="self-end text-xl text-white">{count}</span>
+      <span className="text-xl text-zinc-700">{count}</span>
     </div>
   );
 }

@@ -5,30 +5,30 @@ import LikeIcon from "./likeIcon";
 import { useLikes } from "@/app/hooks/useLikes";
 import { Howl } from "howler";
 import LoadingDots from "./loadingDots";
-import LikeIconSplash from "./likeIconSplash";
+import LikeIconSplash from "./likeIconExplode";
+
+const playSoundOne = (likeCount: number) => {
+  // Initializing Howl within the handler.
+  // Audio object must be initialized after user-gesture (e.g. clicks)
+  const sound1 = new Howl({ src: ["./shooting-sound.mp3"] });
+  sound1.play();
+  sound1.rate((likeCount + 1) / 3);
+};
+
+const playSoundTwo = () => {
+  const sound2 = new Howl({ src: ["./pick.m4a"] });
+  sound2.play();
+};
 
 function Button() {
   const [isCountUp, setIsCountUp] = useState(true);
   const { totalLikes, currentLikes, isLoading, increment, decrement } =
     useLikes();
 
-  const playSoundOne = () => {
-    // Initializing Howl within the handler.
-    // Audio object must be initialized after user-gesture (e.g. clicks)
-    const sound1 = new Howl({ src: ["./shooting-sound.mp3"] });
-    sound1.play();
-    sound1.rate((currentLikes + 1) / 3);
-  };
-
-  const playSoundTwo = () => {
-    const sound2 = new Howl({ src: ["./pick.m4a"] });
-    sound2.play();
-  };
-
   const handleIncrement = () => {
     !isCountUp && setIsCountUp(true);
     increment();
-    playSoundOne();
+    playSoundOne(currentLikes);
     currentLikes === 9 && playSoundTwo();
   };
 
@@ -38,7 +38,7 @@ function Button() {
     e.preventDefault();
     isCountUp && setIsCountUp(false);
     decrement();
-    playSoundOne();
+    playSoundOne(currentLikes);
   };
 
   return (

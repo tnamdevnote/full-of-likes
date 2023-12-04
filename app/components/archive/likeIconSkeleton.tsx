@@ -9,22 +9,17 @@ const HEART_PATH =
 
 function LikeIconSkeleton({ likes }: LikeIconSkeletonProps) {
   return (
-    // <div className="relative rounded-xl bg-zinc-200">
     <svg className="w-14" viewBox="0 0 24 48">
-      <mask id="mask" mask-type="alpha">
-        <path d={HEART_PATH} />
-      </mask>
-
-      {/* <g mask="url(#mask)"> */}
       <rect
-        className={`h-6 w-6 fill-current text-red-400 transition-transform
+        rx={5}
+        ry={5}
+        className={`h-6 w-6 rounded-2xl fill-current text-red-400 transition-transform
           ${likes === 0 ? "translate-y-6" : ""}
           ${likes === 1 ? "translate-y-4" : ""}
           ${likes === 2 ? "translate-y-2" : ""}
           ${likes === 3 ? "translate-y-0" : ""}
         `}
       />
-      {/* </g> */}
       <path
         d={HEART_PATH}
         className="fill-transparent stroke-black"
@@ -32,7 +27,6 @@ function LikeIconSkeleton({ likes }: LikeIconSkeletonProps) {
         strokeWidth={0.4}
       />
     </svg>
-    // </div>
   );
 }
 

@@ -10,15 +10,14 @@ const HEART_PATH =
 function LikeIconTwo({ likes }: LikeIconTwoProps) {
   return (
     <div className="relative h-14 w-14 rounded-xl bg-zinc-200">
-      <svg className="" viewBox="0 0 24 24">
+      <svg className="" viewBox="0 0 24 48">
         <mask id="mask" mask-type="alpha">
           <path d={HEART_PATH} />
         </mask>
 
         <g mask="url(#mask)">
-          <rect width={24} height={24} className="fill-black" />
           <rect
-            className={`h-6 w-6 fill-current text-red-400 transition-transform
+            className={`h-6 w-6 rounded-xl fill-current text-red-400 transition-transform
           ${likes === 0 ? "translate-y-6" : ""}
           ${likes === 1 ? "translate-y-4" : ""}
           ${likes === 2 ? "translate-y-2" : ""}
@@ -26,7 +25,10 @@ function LikeIconTwo({ likes }: LikeIconTwoProps) {
         `}
           />
         </g>
-        {/* <path d={HEART_PATH} className="fill-transparent stroke-black stroke-1" /> */}
+        <path
+          d={HEART_PATH}
+          className="fill-transparent stroke-black stroke-1"
+        />
       </svg>
     </div>
   );

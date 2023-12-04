@@ -36,7 +36,7 @@ function LikeIcon({ likes }: LikeIconProps) {
       </defs>
       <g clipPath="url(#clipped)">
         <g
-          className={`transition-transform duration-500 ease-out 
+          className={`transition-transform duration-500 ease-out
           ${translateYVariants[String(likes)]}
           `}
         >
@@ -63,6 +63,11 @@ function LikeIcon({ likes }: LikeIconProps) {
           </svg>
         </g>
       </g>
+      {/* 
+        Added another layer of heart path, but with transparent background
+        and border. This ensures the heart outline is visible even when the
+        filler is positioned offscreen.
+      */}
       <path
         d={HEART_PATH}
         className="fill-transparent stroke-zinc-600"
