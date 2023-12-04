@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Mini Project: A Like Button</h1>
+<div align="center">
+  
+<a href="https://www.typescriptlang.org/">
+  <img src="https://img.shields.io/badge/TypeScript-5.0.0-%233178C6?logo=typescript" alt="typescript"/>
+</a>
+<a href="https://nextjs.org/">
+  <img src="https://img.shields.io/badge/Next.js-14.0.1-%23000000?logo=next.js" alt="nextjs"/>
+</a>
+<a href="https://www.prisma.io/">
+  <img src="https://img.shields.io/badge/Prisma-5.6.0-%232D3748?logo=prisma" alt="prisma" />
+</a>
+<a href="https://swr.vercel.app/">
+  <img src="https://img.shields.io/badge/SWR-2.2.4-%23000000?logo=swr" alt="swr"/>
+</a>
+<a href="https://planetscale.com/">
+  <img src="https://img.shields.io/badge/PlanetScale-%23000000?logo=planetscale" alt="planetscale"/>
+</a>
+</div>
 
-## Getting Started
+<br>
+<br>
 
-First, run the development server:
+<div align="center">
+  <p>This is a full stack like button that was designed and implmented from scratch.</p>
+  <p>To learn more about how I created this, check it out on my blog <a href="https://medium.com/@taekbeen93/mini-project-how-i-built-a-full-stack-like-button-from-design-to-implementation-701edc1a0f0c">post.</a></p>
+  <p>Click <a href="https://full-of-likes.vercel.app/">here</a> for the demo.</p>
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<div align="center">
+  <img src="https://github.com/tnamdevnote/mini-project-like-button/assets/44216709/6b4bce1f-c235-4953-b5fa-efe228f6aa61" alt="like button demo"/>
+</div>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Tech Stack
+#### Figma
+#### NextJS 13
+#### SWR
+#### Prisma
+#### PlanetScale
+#### TailwindCSS
