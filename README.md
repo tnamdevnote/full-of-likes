@@ -21,9 +21,10 @@
 <br>
 <br>
 
-<div align="center">
-  <p>This is a full stack like button that was designed and implmented from scratch.</p>
-  <p>To learn more about how I created this, check it out on my blog <a href="https://medium.com/@taekbeen93/mini-project-how-i-built-a-full-stack-like-button-from-design-to-implementation-701edc1a0f0c">post.</a></p>
+<div > 
+  <h2>About</h4>
+  <p>The like button is probably one of the most common features found on the web. It can be found everywhere, not just on social media platforms. In this project, I created a custom like button, taking it from design to implementation. Building a delightful UI element is one of the things I enjoy most about frontend development, and I wanted to challenge myself to recreate this button in a way that is simple and delightful to use. </p>
+  <p>To learn more about how I created the like button in detail, check out my blog <a href="https://medium.com/@taekbeen93/mini-project-how-i-built-a-full-stack-like-button-from-design-to-implementation-701edc1a0f0c">post.</a></p>
   <p>Click <a href="https://full-of-likes.vercel.app/">here</a> for the demo.</p>
 </div>
 
@@ -32,10 +33,7 @@
   <img src="https://github.com/tnamdevnote/mini-project-like-button/assets/44216709/6b4bce1f-c235-4953-b5fa-efe228f6aa61" alt="like button demo"/>
 </div>
 
-## Tech Stack
-#### Figma
-#### NextJS 13
-#### SWR
-#### Prisma
-#### PlanetScale
-#### TailwindCSS
+## Learning Goals
+- Learn about new tools in react ecosystem: NextJS, Prisma, PlanetScale, SWR.
+- Gain understanding of the front-end and back-end system of social media like feature.
+- Learn about implementing sound effect in React
