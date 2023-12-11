@@ -24,7 +24,7 @@
 <div > 
   <h2>About</h4>
   <p>The like button is probably one of the most common features found on the web. It can be found everywhere, not just on social media platforms. In this project, I created a custom like button, taking it from design to implementation. Building a delightful UI element is one of the things I enjoy most about frontend development, and I wanted to challenge myself to recreate this button in a way that is simple and delightful to use. </p>
-  <p>To learn more about how I created the like button in detail, <b>check out my blog <a href="https://medium.com/@taekbeen93/mini-project-how-i-built-a-full-stack-like-button-from-design-to-implementation-701edc1a0f0c">post.</a></b></p>
+  <p>To learn more about how I created the like button in detail, <b>check out my <a href="https://medium.com/@taekbeen93/mini-project-how-i-built-a-full-stack-like-button-from-design-to-implementation-701edc1a0f0c">blog post.</a></b></p>
   <p><b>Click <a href="https://full-of-likes.vercel.app/">here</a> for the demo.</b></p>
 </div>
 
