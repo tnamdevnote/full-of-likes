@@ -1,4 +1,4 @@
-<h1 align="center">Mini Project: A Like Button</h1>
+<h1 align="center">Full of Likes</h1>
 <div align="center">
   
 <a href="https://www.typescriptlang.org/">
